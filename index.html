@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toy Shop Landing Page</title>
+    <style>
+        :root {
+            --primary: #ffb347;
+            --secondary: #ff6961;
+            --accent: #77dd77;
+            --bg: #f7faff;
+            --card-bg: #fff;
+            --text: #374151;
+            --shadow: 0 4px 16px rgba(60,72,88,0.10);
+        }
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+        header {
+            background: var(--primary);
+            box-shadow: var(--shadow);
+            padding: 1rem 0;
+        }
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 1.5rem;
+        }
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--secondary);
+            letter-spacing: 2px;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+        }
+        nav a {
+            text-decoration: none;
+            color: var(--text);
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.3rem 0.8rem;
+            border-radius: 0.5rem;
+            transition: background 0.2s;
+        }
+        nav a:hover {
+            background: var(--accent);
+            color: #fff;
+        }
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 3rem 1rem 2rem 1rem;
+            background: linear-gradient(120deg, #ffb347 0%, #ff6961 100%);
+            color: #fff;
+        }
+        .hero-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            letter-spacing: 1px;
+        }
+        .hero-desc {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        .shop-btn {
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            border-radius: 2rem;
+            padding: 0.9rem 2.2rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        .shop-btn:hover {
+            background: var(--secondary);
+            box-shadow: 0 8px 24px rgba(255,105,97,0.18);
+        }
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1.5rem 0;
+            color: var(--secondary);
+        }
+        .products {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto 2.5rem auto;
+            padding: 0 1.5rem;
+        }
+        .product-card {
+            background: var(--card-bg);
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            padding: 1.5rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .product-card:hover {
+            transform: translateY(-6px) scale(1.03);
+            box-shadow: 0 8px 32px rgba(255,179,71,0.18);
+        }
+        .product-img {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, #ffb347 60%, #77dd77 100%);
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #fff;
+            box-shadow: 0 2px 8px rgba(60,72,88,0.08);
+        }
+        .product-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+        .product-desc {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 0.7rem;
+            text-align: center;
+        }
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+        .buy-btn {
+            background: var(--secondary);
+            color: #fff;
+            border: none;
+            border-radius: 1.5rem;
+            padding: 0.6rem 1.5rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        .buy-btn:hover {
+            background: var(--accent);
+            box-shadow: 0 6px 18px rgba(119,221,119,0.18);
+        }
+        .about {
+            max-width: 900px;
+            margin: 0 auto 2.5rem auto;
+            padding: 2rem 1.5rem;
+            background: var(--card-bg);
+            border-radius: 1rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+        .about-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        .about-desc {
+            font-size: 1.1rem;
+            color: #555;
+        }
+        footer {
+            background: var(--primary);
+            color: var(--text);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        .footer-content {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+        }
+        .shop-info {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+            margin-top: 0.5rem;
+        }
+        .social-links a {
+            display: inline-block;
+            width: 36px;
+            height: 36px;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            line-height: 36px;
+            text-align: center;
+            transition: background 0.2s;
+        }
+        .social-links a:hover {
+            background: var(--secondary);
+        }
+        @media (max-width: 700px) {
+            .nav-container, .products, .about, .footer-content {
+                padding: 0 0.5rem;
+            }
+            .products {
+                gap: 1rem;
+            }
+        }
+        @media (max-width: 500px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 0.7rem;
+            }
+            .hero-title {
+                font-size: 1.5rem;
+            }
+            .section-title {
+                font-size: 1.3rem;
+            }
+            .about-title {
+                font-size: 1.1rem;
+            }
+            .product-img {
+                width: 80px;
+                height: 80px;
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <div class="logo">ToyLand</div>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">About</a>
+                <a href="#">Shop</a>
+                <a href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-title">Welcome to ToyLand!</div>
+        <div class="hero-desc">Discover a world of fun, learning, and imagination. Find the perfect toy for every child!</div>
+        <button class="shop-btn">Shop Now</button>
+    </section>
+    <!-- Featured Products -->
+    <div class="section-title">Featured Toys</div>
+    <section class="products">
+        <div class="product-card">
+            <div class="product-img">🧸</div>
+            <div class="product-name">Cuddly Teddy Bear</div>
+            <div class="product-desc">Soft, huggable, and perfect for bedtime snuggles.</div>
+            <div class="product-price">$19.99</div>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+        <div class="product-card">
+            <div class="product-img">🚗</div>
+            <div class="product-name">Speedy Race Car</div>
+            <div class="product-desc">Zoom around with this durable and colorful race car.</div>
+            <div class="product-price">$14.99</div>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+        <div class="product-card">
+            <div class="product-img">🦖</div>
+            <div class="product-name">Dino Explorer</div>
+            <div class="product-desc">Roar into adventure with this friendly dinosaur toy.</div>
+            <div class="product-price">$22.99</div>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+        <div class="product-card">
+            <div class="product-img">🎨</div>
+            <div class="product-name">Creative Art Kit</div>
+            <div class="product-desc">Unleash creativity with paints, brushes, and more!</div>
+            <div class="product-price">$17.99</div>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+        <div class="product-card">
+            <div class="product-img">🧩</div>
+            <div class="product-name">Puzzle Blocks</div>
+            <div class="product-desc">Build, stack, and solve with colorful puzzle blocks.</div>
+            <div class="product-price">$12.99</div>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+        <div class="product-card">
+            <div class="product-img">👾</div>
+            <div class="product-name">Robot Buddy</div>
+            <div class="product-desc">Meet your new interactive robot friend!</div>
+            <div class="product-price">$29.99</div>
+            <button class="buy-btn">Buy Now</button>
+        </div>
+    </section>
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-title">About ToyLand</div>
+        <div class="about-desc">
+            ToyLand is your neighborhood toy shop, dedicated to bringing joy and learning to children of all ages. 
+            We carefully select toys that inspire creativity, imagination, and fun. Visit us for the latest and greatest in play!
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="shop-info">
+                ToyLand &copy; 2024 &mdash; 123 Fun Street, Playville &mdash; (555) 123-4567 &mdash; hello@toyland.com
+            </div>
+            <div class="social-links">
+                <a href="#" title="Facebook" aria-label="Facebook">🌐</a>
+                <a href="#" title="Instagram" aria-label="Instagram">📸</a>
+                <a href="#" title="Twitter" aria-label="Twitter">🐦</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
